@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -129,6 +129,10 @@ vim.o.smartcase = true
 -- Keep signcolumn on by default
 vim.o.signcolumn = 'yes'
 
+-- Automatyczne i inteligentne wcięcia dla kodu (np. C)
+vim.o.autoindent = true
+vim.o.smartindent = true
+vim.o.cindent = true
 -- Decrease update time
 vim.o.updatetime = 250
 
@@ -169,8 +173,10 @@ vim.o.confirm = true
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[W]rite file' })
+vim.keymap.set('n', '<leader>q', '<cmd>wq<CR>', { desc = '[Q]uit and write' })
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config {
@@ -269,6 +275,24 @@ require('lazy').setup({
   --        end,
   --    }
   --
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- Zapewnia ikony (wymaga Nerd Font)
+      'MunifTanjim/nui.nvim',
+    },
+    keys = {
+      { '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Przełącz [E]ksplorator plików' },
+    },
+    opts = {
+      window = {
+        position = 'left',
+        width = 25, -- To zapewnia wąski panel, około 1/10 standardowego szerokiego ekranu
+      },
+    },
+  },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`.
   --
@@ -600,9 +624,9 @@ require('lazy').setup({
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -760,7 +784,7 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'super-tab',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
