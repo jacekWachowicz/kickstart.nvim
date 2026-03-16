@@ -177,6 +177,7 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[W]rite file' })
 vim.keymap.set('n', '<leader>q', '<cmd>wq<CR>', { desc = '[Q]uit and write' })
+vim.keymap.set('i', '<Space><Space>', '<Esc>', { desc = 'Esc' })
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config {
@@ -974,3 +975,23 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+-- =================================================================
+-- === NAPRAWA WCIĘĆ DLA JĘZYKA C / C++ ===
+-- =================================================================
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp' },
+  callback = function()
+    -- 1. Brutalnie czyścimy wyrażenie wcięć (neutralizujemy błędy Tree-sittera)
+    vim.bo.indentexpr = ''
+
+    -- 2. Wymuszamy użycie natywnego, wbudowanego w rdzeń algorytmu C
+    vim.bo.cindent = true
+
+    -- 3. Gwarantujemy, że parametry tabulatora są rygorystyczne
+    vim.bo.shiftwidth = 4
+    vim.bo.tabstop = 4
+    vim.bo.expandtab = true
+  end,
+  desc = 'Wymuś natywny cindent i wyłącz zepsuty indentexpr dla plików C',
+})
