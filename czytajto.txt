@@ -1,2 +1,2 @@
 proszę pamiętać o zainstalowaniu pakietu NPM, żeby LSP pythona mogło się pobrać.
-instalacja pyrighta można sprawdzić po wpisaniu :Mason
+instalacja pyrighta i innych lsp można sprawdzić po wpisaniu :Mason
