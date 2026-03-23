@@ -176,6 +176,7 @@ vim.o.confirm = true
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[W]rite file' })
+vim.keymap.set('n', '<leader>wq', '<cmd>wq<CR>', { desc = '[W]rite file and [Q]uit' })
 vim.keymap.set('n', '<leader>q', '<cmd>wq<CR>', { desc = '[Q]uit and write' })
 vim.keymap.set('i', '<Space><Space>', '<Esc>', { desc = 'Esc' })
 -- Diagnostic Config & Keymaps
