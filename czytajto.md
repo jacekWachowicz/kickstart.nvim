@@ -1,0 +1,15 @@
+# proszę pamiętać o zainstalowaniu pakietu NPM, żeby LSP pythona mogło się pobrać.
+
+instalacja pyrighta i innych lsp można sprawdzić po wpisaniu ```:Mason```
+
+---
+
+```bash
+sudo apt install nodejs npm
+sudo npm install -g tree-sitter-cli
+sudo apt install xclip
+```
+
+można jeszcze dodać jakieś pakiety javy, nie zapominać o gcc i make
+
+zainstalować font jetbrainsów najpierw install.sh potem set.sh

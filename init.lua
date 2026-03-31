@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -294,6 +294,19 @@ require('lazy').setup({
         width = 25, -- To zapewnia wąski panel, około 1/10 standardowego szerokiego ekranu
       },
     },
+  },
+  {
+    'OXY2DEV/markview.nvim',
+    lazy = false, -- Zalecane, aby dekoracje ładowały się natychmiast po otwarciu pliku .md
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('markview').setup {
+        -- Tutaj możesz dodać własną konfigurację w przyszłości
+      }
+    end,
   },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`.
