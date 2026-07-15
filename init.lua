@@ -735,11 +735,22 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        c = { 'clang-format' },
+        cpp = { 'clang-format' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      },
+      formatters = {
+        ['clang-format'] = {
+          -- Wykorzystujemy funkcję prepend_args do bezpiecznego wstrzyknięcia flagi stylu,
+          -- bez niszczenia domyślnego potoku wejścia/wyjścia (stdin/stdout) narzędzia
+          prepend_args = {
+            '--style={BasedOnStyle: Microsoft, IndentWidth: 4, TabWidth: 4, UseTab: Never, KeepEmptyLinesAtTheStartOfBlocks: true, MaxEmptyLinesToKeep: 3}',
+          },
+        },
       },
     },
   },
@@ -880,7 +891,7 @@ require('lazy').setup({
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
-
+      require('mini.align').setup()
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren

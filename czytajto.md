@@ -13,3 +13,9 @@ sudo apt install xclip
 można jeszcze dodać jakieś pakiety javy, nie zapominać o gcc i make
 
 zainstalować font jetbrainsów najpierw install.sh potem set.sh
+
+##formater języków:
+
+```bash
+brew install clang-formatter
+```
