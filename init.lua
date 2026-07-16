@@ -748,7 +748,7 @@ require('lazy').setup({
           -- Wykorzystujemy funkcję prepend_args do bezpiecznego wstrzyknięcia flagi stylu,
           -- bez niszczenia domyślnego potoku wejścia/wyjścia (stdin/stdout) narzędzia
           prepend_args = {
-            '--style={BasedOnStyle: Microsoft, IndentWidth: 4, TabWidth: 4, UseTab: Never, KeepEmptyLinesAtTheStartOfBlocks: true, MaxEmptyLinesToKeep: 3}',
+            '--style={BasedOnStyle: Microsoft,PointerAlignment: Left, IndentWidth: 4, TabWidth: 4, UseTab: Never, KeepEmptyLinesAtTheStartOfBlocks: true, MaxEmptyLinesToKeep: 3}',
           },
         },
       },
